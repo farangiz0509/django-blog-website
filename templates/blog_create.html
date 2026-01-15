@@ -7,6 +7,7 @@ Blog Website | Yangi maqola
 
 {% block stylesheet %}
 <link rel="stylesheet" href="{% static 'css/create.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 {% endblock stylesheet %}
 
 {% block content %}
@@ -31,18 +32,17 @@ Blog Website | Yangi maqola
                 placeholder="Maqola sarlavhasi"
                 required
             >
-        </div>
+            {% if form.title.errors %}
+                <div class="error">
+                    {{ form.title.errors }}
+                </div>
+            {% endif %}
 
-        <!-- Slug -->
-        <div class="form-group">
-            <label for="slug">Slug (URL)</label>
-            <input
-                type="text"
-                id="slug"
-                name="slug"
-                placeholder="maqola-slugi"
-                required
-            >
+            {% if form.title.help_text %}
+                <p class="help">
+                    {{ form.title.help_text }}
+                </p>
+            {% endif %}
         </div>
 
         <!-- Reading minute -->
@@ -56,6 +56,17 @@ Blog Website | Yangi maqola
                 placeholder="5"
                 required
             >
+            {% if form.reading_minute.errors %}
+                <div class="error">
+                    {{ form.reading_minute.errors }}
+                </div>
+            {% endif %}
+
+            {% if form.reading_minute.help_text %}
+                <p class="help">
+                    {{ form.reading_minute.help_text }}
+                </p>
+            {% endif %}
         </div>
 
         <!-- Content -->
@@ -68,6 +79,17 @@ Blog Website | Yangi maqola
                 placeholder="Maqola matnini shu yerga yozing..."
                 required
             ></textarea>
+            {% if form.content.errors %}
+                <div class="error">
+                    {{ form.content.errors }}
+                </div>
+            {% endif %}
+
+            {% if form.content.help_text %}
+                <p class="help">
+                    {{ form.content.help_text }}
+                </p>
+            {% endif %}
         </div>
 
         <!-- Telegram link -->
@@ -79,6 +101,17 @@ Blog Website | Yangi maqola
                 name="tg_link"
                 placeholder="https://t.me/..."
             >
+            {% if form.tg_link.errors %}
+                <div class="error">
+                    {{ form.tg_link.errors }}
+                </div>
+            {% endif %}
+
+            {% if form.tg_link.help_text %}
+                <p class="help">
+                    {{ form.tg_link.help_text }}
+                </p>
+            {% endif %}
         </div>
 
         <!-- Submit -->
